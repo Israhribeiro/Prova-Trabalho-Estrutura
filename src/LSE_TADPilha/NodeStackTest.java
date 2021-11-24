@@ -3,7 +3,6 @@ package LSE_TADPilha;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import exceptions.EmptyStackException;
-import LSE_TADPilha.NodeStack;
 
 class NodeStackTest {
     Object o;

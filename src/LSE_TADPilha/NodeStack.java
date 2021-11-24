@@ -1,7 +1,7 @@
 package LSE_TADPilha;
 
-import exceptions.EmptyStackException;
 import Array.Stack;
+import exceptions.EmptyStackException;
 
 public class NodeStack<E> implements Stack<E> {
     protected Node<E> top;
