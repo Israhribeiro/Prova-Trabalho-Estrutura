@@ -6,6 +6,8 @@ import Funcoes.Funcoes;
 public class Tela {
     public static void main (String [] args) {
 
+        System.out.println("--------------------------------------------------------------------------------------------");
+
         intro();
 
         System.out.println("--------------------------------------------------------------------------------------------");
@@ -15,7 +17,6 @@ public class Tela {
     public static void intro(){
         Funcoes programa = new Funcoes();
 
-        System.out.println("--------------------------------------------------------------------------------------------");
         System.out.println("1 Para cadastrar");
         System.out.println("2 Para ver seus dados, passe seu Ra");
         System.out.println("3 Para atualizar seus dados ");
