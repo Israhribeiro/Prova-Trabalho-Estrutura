@@ -12,6 +12,13 @@ public class Aluno {
 
     private String dataDeNascimento;
 
+    public Aluno(int ra, String nome, String endereco, String celular, String dataDeNascimento){
+        setRa(ra);
+        setNome(nome);
+        setEndereco(endereco);
+        setCelular(celular);
+        setDataDeNascimento(dataDeNascimento);
+    }
 
     public int getRa() {
         return ra;

@@ -1,12 +1,13 @@
-package HashStudentSystem;
+package Funcoes;
 
 import java.util.Locale;
 import java.util.Scanner;
 import LSE_TADPilha.NodeStack;
+import aluno.Aluno;
 
-public class Programa {
-    public static void main(String args[]){
+public class Funcoes {
 
+    public void register(){
         NodeStack studentsStack = new NodeStack();
 
         Scanner in = new Scanner(System.in);
@@ -30,7 +31,9 @@ public class Programa {
 
             if(op == "s") {
 
-                studentsStack.push();
+                Aluno aluno = new Aluno(ra,nome,endereco,celular,nascimento);
+
+                studentsStack.push(aluno);
 
                 System.out.println("Você quer cadastrar outro aluno ?");
                 op = in.nextLine().toLowerCase(Locale.ROOT);
@@ -41,5 +44,17 @@ public class Programa {
 
             }
         }
+    }
+
+    public void read(){
+
+    }
+
+    public void update(){
+
+    }
+
+    public void delete(){
+
     }
 }

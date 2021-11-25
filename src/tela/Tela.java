@@ -1,9 +1,19 @@
 package tela;
 
 import java.util.Scanner;
+import Funcoes.Funcoes;
 
 public class Tela {
     public static void main (String [] args) {
+
+        intro();
+
+        System.out.println("--------------------------------------------------------------------------------------------");
+
+    }
+
+    public static void intro(){
+        Funcoes programa = new Funcoes();
 
         System.out.println("--------------------------------------------------------------------------------------------");
         System.out.println("1 Para cadastrar");
@@ -16,23 +26,22 @@ public class Tela {
         int escolha = in2.nextInt();
         switch (escolha) {
             case 1:
-                System.out.println("Dez");
+                programa.register();
+                break;
             case 2:
-                System.out.println("Numero muito grande");
-
+                programa.read();
+                break;
             case 3:
-                System.out.println("Numero muito grande");
-
+                programa.update();
+                break;
             case 4:
-                System.out.println("Numero muito grande");
-
+                programa.delete();
+                break;
             case 5:
-                System.out.println("fechando Sistema ");
+                break;
             default:
                 System.out.println("Opção invalida");
+                intro();
         }
-
-        System.out.println("--------------------------------------------------------------------------------------------");
-
     }
 }
