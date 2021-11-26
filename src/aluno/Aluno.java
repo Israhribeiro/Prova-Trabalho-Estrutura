@@ -20,6 +20,8 @@ public class Aluno {
         setDataDeNascimento(dataDeNascimento);
     }
 
+    public Aluno(){}
+
     public int getRa() {
         return ra;
     }
