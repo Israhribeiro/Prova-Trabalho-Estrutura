@@ -1,9 +1,10 @@
 package Funcoes;
 
-import java.util.Locale;
-import java.util.Scanner;
 import LSE_TADPilha.NodeStack;
 import aluno.Aluno;
+
+import java.util.Locale;
+import java.util.Scanner;
 
 public class Funcoes {
 
