@@ -1,20 +1,25 @@
 package tela;
 
-import java.util.Scanner;
+import DicionarioHash.HashTableMultiMap;
 import Funcoes.Funcoes;
+import aluno.Aluno;
+
+import java.util.Scanner;
 
 public class Tela {
     public static void main (String [] args) {
 
+        HashTableMultiMap<Integer, Aluno> db = new HashTableMultiMap<Integer,Aluno>();
+
         System.out.println("--------------------------------------------------------------------------------------------");
 
-        intro();
+        intro(db);
 
         System.out.println("--------------------------------------------------------------------------------------------");
 
     }
 
-    public static void intro(){
+    public static void intro(HashTableMultiMap<Integer,Aluno> db){
         Funcoes programa = new Funcoes();
 
         System.out.println("1 Para cadastrar");
@@ -27,22 +32,24 @@ public class Tela {
         int escolha = in2.nextInt();
         switch (escolha) {
             case 1:
-                programa.register();
+                programa.register(db);
                 break;
             case 2:
-                programa.read();
+                programa.read(db);
                 break;
             case 3:
-                programa.update();
+                programa.update(db);
                 break;
             case 4:
-                programa.delete();
+                programa.delete(db);
                 break;
             case 5:
                 break;
             default:
                 System.out.println("Opção invalida");
-                intro();
+                intro(db);
         }
+
+        intro(db);
     }
 }
