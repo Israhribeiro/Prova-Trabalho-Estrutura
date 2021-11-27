@@ -3,6 +3,7 @@ package json;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 
 public class JsonManager {
@@ -30,10 +31,10 @@ public class JsonManager {
             estado = (String) jsonObject.get("estado");
             pais = (String) jsonObject.get("pais");
 
+            jsonReader = (JSONObject) parser.parse(new FileReader("saida.json"));
+
             String jsonValor = "{\"valor\":{\"valor2\":\"valor3\"}}";
-            System.out.printf("Nome: %s\nSobrenome: %s\nEstado: %s\nPais: %s\n",
-                    nome, sobrenome, estado, pais);
-            System.out.println(jsonObject.keySet());
+            System.out.println(jsonReader.keySet());
             writeFile = new FileWriter("saida.json");
             writeFile.write(jsonValor);
 
