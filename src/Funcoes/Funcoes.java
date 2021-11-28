@@ -4,6 +4,7 @@ import DicionarioHash.HashTableMultiMap;
 import LSE_TADPilha.NodeStack;
 import aluno.Aluno;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -87,34 +88,9 @@ public class Funcoes {
 
     }
 
-    public void readAll(HashTableMultiMap<Integer,Aluno> db){
-        Scanner in = new Scanner(System.in);
-        //return db.entrySet().toString();
-
-        while(true){
-            for (int i = 0; i < db.size(); i++) {
-
-
-
-                //Aluno aluno = findAlunoByRA(ra,db);
-
-                //System.out.println();
-
-                //System.out.println("RA: " + aluno.getRa());
-                //System.out.println("Nome: " + aluno.getNome());
-                //System.out.println("Celular: " + aluno.getCelular());
-                //System.out.println("Endereço: " + aluno.getEndereco());
-                //System.out.println("Data de Nascimento: " + aluno.getDataDeNascimento());
-            }
-
-            System.out.print("Quer consultar outro aluno ? (s/n) ");
-            String op = in.nextLine();
-
-            if(op.compareTo("s") != 0){
-                break;
-            }
-        }
-
+    public String readAll(HashTableMultiMap<Integer,Aluno> db){
+        System.out.println(db.entrySet().toString());
+        return db.entrySet().toString();
     }
 
     public Aluno findAlunoByRA(int ra,HashTableMultiMap<Integer,Aluno> db){
