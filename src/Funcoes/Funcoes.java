@@ -89,9 +89,12 @@ public class Funcoes {
 
     public void readAll(HashTableMultiMap<Integer,Aluno> db){
         Scanner in = new Scanner(System.in);
+        //return db.entrySet().toString();
 
         while(true){
             for (int i = 0; i < db.size(); i++) {
+
+
 
                 //Aluno aluno = findAlunoByRA(ra,db);
 
@@ -115,7 +118,12 @@ public class Funcoes {
     }
 
     public Aluno findAlunoByRA(int ra,HashTableMultiMap<Integer,Aluno> db){
-        return db.get(ra).getValue();
+        if (db.get(ra) == null){
+            System.out.println("Valor não localizado");
+            return null;
+        }else{
+            return db.get(ra).getValue();
+        }
     }
 
     public void update(HashTableMultiMap<Integer,Aluno> db){
