@@ -49,8 +49,8 @@ public class Funcoes {
                 System.out.println("Você quer cadastrar outro aluno ?");
                 op = in.nextLine().toLowerCase(Locale.ROOT);
 
-                if(op.compareTo("s") != 0){
-                    for (int i = 0; i < studentsStack.size(); i++) {
+                    if(op.equals("s") == false){
+                    for (int i = 0; i <= studentsStack.size(); i++) {
                         Aluno alunoItem = studentsStack.pop();
                         db.put(alunoItem.getRa(),alunoItem);
                     }
@@ -68,6 +68,10 @@ public class Funcoes {
             System.out.print("Insira o RA do aluno que quer consultar: ");
             int ra = Integer.parseInt(in.nextLine());
             Aluno aluno = findAlunoByRA(ra,db);
+            if(aluno == null){
+                break;
+            }
+
 
             System.out.println();
 
@@ -86,43 +90,34 @@ public class Funcoes {
         }
 
     }
+    public void readEach(Aluno aluno){
+        System.out.println("RA: " + aluno.getRa());
+        System.out.println("Nome: " + aluno.getNome());
+        System.out.println("Celular: " + aluno.getCelular());
+        System.out.println("Endereço: " + aluno.getEndereco());
+        System.out.println("Data de Nascimento: " + aluno.getDataDeNascimento());
+    }
 
     public void readAll(HashTableMultiMap<Integer,Aluno> db){
-        Scanner in = new Scanner(System.in);
+        db.entrySet().forEach(i -> readEach(i.getValue()));
 
-        while(true){
-            for (int i = 0; i < db.size(); i++) {
-
-                //Aluno aluno = findAlunoByRA(ra,db);
-
-                //System.out.println();
-
-                //System.out.println("RA: " + aluno.getRa());
-                //System.out.println("Nome: " + aluno.getNome());
-                //System.out.println("Celular: " + aluno.getCelular());
-                //System.out.println("Endereço: " + aluno.getEndereco());
-                //System.out.println("Data de Nascimento: " + aluno.getDataDeNascimento());
-            }
-
-            System.out.print("Quer consultar outro aluno ? (s/n) ");
-            String op = in.nextLine();
-
-            if(op.compareTo("s") != 0){
-                break;
-            }
-        }
 
     }
 
     public Aluno findAlunoByRA(int ra,HashTableMultiMap<Integer,Aluno> db){
+        if(db.get(ra).getValue() == null){
+            System.out.println("RA não cadastrado" + ra);
+            return null;
+        }else{
         return db.get(ra).getValue();
+    }
     }
 
     public void update(HashTableMultiMap<Integer,Aluno> db){
         Scanner in = new Scanner(System.in);
         while(true){
             try{
-                System.out.print("Insira o RA do aluno que quer atualizar: ");
+                System.out.print("Insira o RA do aluno que quer remover: ");
                 int ra = Integer.parseInt(in.nextLine());
                 Aluno aluno = findAlunoByRA(ra,db);
 

@@ -23,10 +23,11 @@ public class Tela {
         Funcoes programa = new Funcoes();
 
         System.out.println("1 Para cadastrar");
-        System.out.println("2 Para ver seus dados, passe seu Ra");
+        System.out.println("2 Para consultar um Aluno");
         System.out.println("3 Para atualizar seus dados ");
         System.out.println("4 Para remover seus dados");
-        System.out.println("5 para sair ");
+        System.out.println("5 para ler todos os dados");
+        System.out.println("6 para sair");
         Scanner in2 = new Scanner(System.in);
 
         int escolha = in2.nextInt();
@@ -44,10 +45,14 @@ public class Tela {
                 programa.delete(db);
                 break;
             case 5:
+                programa.readAll(db);
+                break;
+            case 6:
                 break;
             default:
                 System.out.println("Opção invalida");
                 intro(db);
+
         }
 
         intro(db);
