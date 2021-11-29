@@ -6,11 +6,12 @@ import aluno.Aluno;
 
 import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Funcoes {
 
-    public void register(HashTableMultiMap<Integer,Aluno> db){
+    public void register(HashTableMultiMap<Integer, NodeStack> db){
 
         NodeStack<Aluno> studentsStack = new NodeStack<Aluno>();
 
@@ -46,37 +47,40 @@ public class Funcoes {
                 Aluno aluno = new Aluno(ra,nome,endereco,celular,nascimento);
 
                 studentsStack.push(aluno);
+                db.put(ra,studentsStack);
 
                 System.out.println("Você quer cadastrar outro aluno ?");
                 op = in.nextLine().toLowerCase(Locale.ROOT);
 
-                if(op.compareTo("s") != 0){
-                    for (int i = 0; i < studentsStack.size(); i++) {
-                        Aluno alunoItem = studentsStack.pop();
-                        db.put(alunoItem.getRa(),alunoItem);
-                    }
+                if(op.equals("s")){
+                    register(db);
+                }
                     break;
                 }
 
             }
         }
-    }
 
-    public void read(HashTableMultiMap<Integer,Aluno> db){
+
+    public void read(HashTableMultiMap<Integer, NodeStack> db){
         Scanner in = new Scanner(System.in);
 
         while(true){
             System.out.print("Insira o RA do aluno que quer consultar: ");
             int ra = Integer.parseInt(in.nextLine());
-            Aluno aluno = findAlunoByRA(ra,db);
+            if(db.get(ra)==null){
+                System.out.println("Valor não localizado");
+                break;
+            }
+
 
             System.out.println();
 
-            System.out.println("RA: " + aluno.getRa());
-            System.out.println("Nome: " + aluno.getNome());
-            System.out.println("Celular: " + aluno.getCelular());
-            System.out.println("Endereço: " + aluno.getEndereco());
-            System.out.println("Data de Nascimento: " + aluno.getDataDeNascimento());
+            System.out.println("RA: " + db.get(ra..getValue());
+            System.out.println("Nome: " + db.get(ra).getValue().toString());
+            System.out.println("Celular: " + db.get(ra).getValue().toString());
+            System.out.println("Endereço: " + db.get(ra).getValue().toString());
+            System.out.println("Data de Nascimento: " + db.get(ra).getValue().toString());
 
             System.out.print("Quer consultar outro aluno ? (s/n) ");
             String op = in.nextLine();
@@ -93,38 +97,38 @@ public class Funcoes {
         return db.entrySet().toString();
     }
 
-    public Aluno findAlunoByRA(int ra,HashTableMultiMap<Integer,Aluno> db){
+    public Map.Entry findAlunoByRA(int ra, HashTableMultiMap db){
         if (db.get(ra) == null){
             System.out.println("Valor não localizado");
             return null;
         }else{
-            return db.get(ra).getValue();
+            return db.get(ra);
         }
     }
 
-    public void update(HashTableMultiMap<Integer,Aluno> db){
+    public void update(HashTableMultiMap<Integer, NodeStack> db){
         Scanner in = new Scanner(System.in);
         while(true){
             try{
                 System.out.print("Insira o RA do aluno que quer atualizar: ");
                 int ra = Integer.parseInt(in.nextLine());
-                Aluno aluno = findAlunoByRA(ra,db);
+                String aluno = db.get(ra).toString();
 
                 System.out.println("Informações antigas do aluno:");
-                System.out.println("RA: " + aluno.getRa());
-                System.out.println("Nome: " + aluno.getNome());
-                System.out.println("Celular: " + aluno.getCelular());
-                System.out.println("Endereço: " + aluno.getEndereco());
-                System.out.println("Data de Nascimento: " + aluno.getDataDeNascimento());
+                System.out.println("RA: " + aluno);
+                System.out.println("Nome: " + aluno);
+                System.out.println("Celular: " + aluno);
+                System.out.println("Endereço: " + aluno);
+                System.out.println("Data de Nascimento: "+ aluno);
 
                 System.out.print("Insira o Nome: ");
-                aluno.setNome(in.nextLine());
+                //aluno(in.nextLine());
                 System.out.print("Insira o Celular: ");
-                aluno.setCelular(in.nextLine());
+                //aluno.setCelular(in.nextLine());
                 System.out.print("Insira o Endereço: ");
-                aluno.setEndereco(in.nextLine());
+                //aluno.setEndereco(in.nextLine());
                 System.out.print("Insira a Data de Nascimento: ");
-                aluno.setDataDeNascimento(in.nextLine());
+                //aluno.setDataDeNascimento(in.nextLine());
 
                 System.out.print("Quer atualizar outro aluno ? (s/n) ");
                 String op = in.nextLine();
@@ -138,7 +142,7 @@ public class Funcoes {
 
     }
 
-    public void delete(HashTableMultiMap<Integer,Aluno> db){
+    public void delete(HashTableMultiMap<Integer, NodeStack> db){
         Scanner in = new Scanner(System.in);
         while(true){
             try{

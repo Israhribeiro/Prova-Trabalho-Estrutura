@@ -2,6 +2,7 @@ package tela;
 
 import DicionarioHash.HashTableMultiMap;
 import Funcoes.Funcoes;
+import LSE_TADPilha.NodeStack;
 import aluno.Aluno;
 
 import java.util.Scanner;
@@ -9,7 +10,7 @@ import java.util.Scanner;
 public class Tela {
     public static void main (String [] args) {
 
-        HashTableMultiMap<Integer, Aluno> db = new HashTableMultiMap<Integer,Aluno>();
+        HashTableMultiMap<Integer, NodeStack> db = new HashTableMultiMap<Integer,NodeStack>();
 
         System.out.println("--------------------------------------------------------------------------------------------");
 
@@ -19,7 +20,7 @@ public class Tela {
 
     }
 
-    public static void intro(HashTableMultiMap<Integer,Aluno> db){
+    public static void intro(HashTableMultiMap<Integer,NodeStack> db){
         Funcoes programa = new Funcoes();
 
         System.out.println("1 Para cadastrar");
