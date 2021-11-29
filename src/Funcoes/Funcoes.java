@@ -17,10 +17,13 @@ public class Funcoes {
 
         Scanner in = new Scanner(System.in);
 
-        while(true){
-            System.out.print("Insira o RA do Aluno: ");
             try {
+                System.out.print("Insira o RA do Aluno: ");
                 int ra = Integer.parseInt(in.nextLine());
+                if(db.get(ra) != null){
+                    System.out.println("Esse RA já existe");
+                    register(db);
+                }
                 System.out.println();
                 System.out.print("Insira o Nome do Aluno: ");
                 String nome = in.nextLine();
@@ -58,19 +61,18 @@ public class Funcoes {
                             db.put(alunoItem.getRa(),alunoItem);
                             JsonManager.registerOnJSON(alunoItem);
                         }
-                        break;
+                        return;
+                    }else{
+                        register(db);
                     }
-
                 }
             }catch(NumberFormatException nexc){
                 System.out.println("Valor digitado não corresponde a um RA");
-                break;
+                register(db);
             }catch(InputMismatchException nexc){
                 System.out.println("Valor digitado não corresponde a um RA");
-                break;
+                register(db);
             }
-
-        }
     }
 
     public void read(HashTableMultiMap<Integer,Aluno> db){
@@ -81,9 +83,9 @@ public class Funcoes {
             int ra = Integer.parseInt(in.nextLine());
             Aluno aluno = findAlunoByRA(ra,db);
             if(aluno == null){
+                System.out.println("RA inválido");
                 break;
             }
-
 
             System.out.println();
 
@@ -128,8 +130,16 @@ public class Funcoes {
         while(true){
             try{
                 System.out.print("Insira o RA do aluno que quer atualizar: ");
-                int ra = Integer.parseInt(in.nextLine());
-                Aluno aluno = findAlunoByRA(ra,db);
+                int ra = 0;
+                Aluno aluno = new Aluno();
+
+                try{
+                    ra = Integer.parseInt(in.nextLine());
+                    aluno = findAlunoByRA(ra,db);
+                }catch (NumberFormatException e){
+                    System.out.println("RA não encontrado");
+                    update(db);
+                }
 
                 System.out.println("Informações antigas do aluno:");
                 System.out.println("RA: " + aluno.getRa());
