@@ -76,6 +76,7 @@ public class Funcoes {
 
         while(true){
             System.out.print("Insira o RA do aluno que quer consultar: ");
+            try{
             int ra = Integer.parseInt(in.nextLine());
             Aluno aluno = findAlunoByRA(ra,db);
             if(aluno == null){
@@ -95,6 +96,13 @@ public class Funcoes {
             String op = in.nextLine();
 
             if(op.compareTo("s") != 0){
+                break;
+            }
+        }catch(NumberFormatException nexc){
+                System.out.println("Valor digitado não corresponde a um RA");
+                break;
+            }catch(InputMismatchException nexc){
+                System.out.println("Valor digitado não corresponde a um RA");
                 break;
             }
         }
@@ -163,7 +171,7 @@ public class Funcoes {
         Scanner in = new Scanner(System.in);
         while(true){
             try{
-                System.out.print("Insira o RA do aluno que quer consultar: ");
+                System.out.print("Insira o RA do aluno que quer deletar: ");
                 int ra = Integer.parseInt(in.nextLine());
                 db.remove(db.get(ra));
                 System.out.print("Aluno deletado com sucesso");
@@ -174,6 +182,7 @@ public class Funcoes {
                 }
             }catch(Exception e){
                 System.out.println("RA não encontrado");
+                break;
             }
         }
     }
