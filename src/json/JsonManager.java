@@ -1,49 +1,108 @@
 package json;
 
+import DicionarioHash.HashTableMultiMap;
+import aluno.Aluno;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Map;
+import java.util.Set;
 
 public class JsonManager {
-    public static void main(String[] args) {
+
+    public static HashTableMultiMap<Integer, Aluno> turnIntoDictionary(){
         JSONObject jsonObject = new JSONObject();
         JSONParser parser = new JSONParser();
 
-        FileWriter writeFile = null;
-        JSONObject jsonReader = new JSONObject();
+        HashTableMultiMap<Integer,Aluno> students = new HashTableMultiMap<Integer,Aluno>();
 
-        jsonObject.put("nome", "Clebinho");
-        jsonObject.put("sobrenome", "Russomano");
-        jsonObject.put("pais", "Clebinho");
-        jsonObject.put("estado", "Jardins");
-        jsonObject.put("Clebinho","{ 'valor' : 'valor2' }");
-
-        String nome;
-        String sobrenome;
-        String estado;
-        String pais;
+        String nome = null;
+        String endereco = null;
+        String celular = null;
+        String dataDeNascimento = null;
 
         try{
-            nome = (String) jsonObject.get("nome");
-            sobrenome = (String) jsonObject.get("sobrenome");
-            estado = (String) jsonObject.get("estado");
-            pais = (String) jsonObject.get("pais");
+            jsonObject = (JSONObject) parser.parse(new FileReader("saida.json"));
+            Set keys = jsonObject.keySet();
+            for (Object key:keys) {
+                int actualKey = Integer.parseInt((String) key);
+                Map student = (Map) jsonObject.get(key);
 
-            jsonReader = (JSONObject) parser.parse(new FileReader("saida.json"));
+                nome = (String) student.get("nome");
+                endereco = (String) student.get("endereco");
+                celular = (String) student.get("celular");
+                dataDeNascimento = (String) student.get("dataDeNascimento");
 
-            String jsonValor = "{\"valor\":{\"valor2\":\"valor3\"}}";
-            System.out.println(jsonReader.keySet());
-            writeFile = new FileWriter("saida.json");
-            writeFile.write(jsonValor);
-
-            writeFile.close();
+                students.put(actualKey,new Aluno(actualKey,nome,endereco,celular,dataDeNascimento));
+            }
+            return students;
+        }catch(Exception e){
+            System.out.println(e);
         }
-        catch(Exception e){
-            e.printStackTrace();
-        }
+        return null;
+    }
 
-        System.out.println(jsonObject);
+    public static void registerOnJSON(Aluno aluno){
+        JSONObject jsonObject = new JSONObject();
+        JSONParser parser = new JSONParser();
+
+        try{
+            jsonObject = (JSONObject) parser.parse(new FileReader("saida.json"));
+
+            JSONObject alunoJson = new JSONObject();
+            alunoJson.put("nome",aluno.getNome());
+            alunoJson.put("endereco",aluno.getEndereco());
+            alunoJson.put("celular",aluno.getCelular());
+            alunoJson.put("dataDeNascimento",aluno.getDataDeNascimento());
+            jsonObject.put(aluno.getRa(),alunoJson);
+
+            FileWriter writer = new FileWriter("saida.json");
+            System.out.println(jsonObject.toJSONString());
+            writer.write(jsonObject.toJSONString());
+            writer.close();
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public static void updateOnJSON(Aluno aluno){
+        JSONObject jsonObject = new JSONObject();
+        JSONParser parser = new JSONParser();
+
+        try{
+            jsonObject = (JSONObject) parser.parse(new FileReader("saida.json"));
+
+            JSONObject alunoJson = new JSONObject();
+            alunoJson.put("nome",aluno.getNome());
+            alunoJson.put("endereco",aluno.getEndereco());
+            alunoJson.put("celular",aluno.getCelular());
+            alunoJson.put("dataDeNascimento",aluno.getDataDeNascimento());
+            jsonObject.replace("" + aluno.getRa(),alunoJson);
+
+            FileWriter writer =  new FileWriter("saida.json");
+            writer.write(jsonObject.toJSONString());
+            writer.close();
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+
+    public static void removeFromJSON(int ra){
+        JSONObject jsonObject = new JSONObject();
+        JSONParser parser = new JSONParser();
+
+        try{
+            jsonObject = (JSONObject) parser.parse(new FileReader("saida.json"));
+            jsonObject.remove("" + ra);
+            FileWriter writer =  new FileWriter("saida.json");
+            writer.write(jsonObject.toJSONString());
+            writer.close();
+        }catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

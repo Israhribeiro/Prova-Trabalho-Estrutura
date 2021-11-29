@@ -3,6 +3,7 @@ package Funcoes;
 import DicionarioHash.HashTableMultiMap;
 import LSE_TADPilha.NodeStack;
 import aluno.Aluno;
+import json.JsonManager;
 
 import java.util.InputMismatchException;
 import java.util.Locale;
@@ -55,6 +56,7 @@ public class Funcoes {
                         for (int i = 0; i <= studentsStack.size(); i++) {
                             Aluno alunoItem = studentsStack.pop();
                             db.put(alunoItem.getRa(),alunoItem);
+                            JsonManager.registerOnJSON(alunoItem);
                         }
                         break;
                     }
@@ -110,8 +112,6 @@ public class Funcoes {
 
     public void readAll(HashTableMultiMap<Integer,Aluno> db){
         db.entrySet().forEach(i -> readEach(i.getValue()));
-
-
     }
 
     public Aluno findAlunoByRA(int ra,HashTableMultiMap<Integer,Aluno> db){
@@ -127,7 +127,7 @@ public class Funcoes {
         Scanner in = new Scanner(System.in);
         while(true){
             try{
-                System.out.print("Insira o RA do aluno que quer remover: ");
+                System.out.print("Insira o RA do aluno que quer atualizar: ");
                 int ra = Integer.parseInt(in.nextLine());
                 Aluno aluno = findAlunoByRA(ra,db);
 
@@ -147,6 +147,8 @@ public class Funcoes {
                 System.out.print("Insira a Data de Nascimento: ");
                 aluno.setDataDeNascimento(in.nextLine());
 
+                JsonManager.updateOnJSON(aluno);
+
                 System.out.print("Quer atualizar outro aluno ? (s/n) ");
                 String op = in.nextLine();
                 if(op.compareTo("s") != 0){
@@ -163,10 +165,11 @@ public class Funcoes {
         Scanner in = new Scanner(System.in);
         while(true){
             try{
-                System.out.print("Insira o RA do aluno que quer consultar: ");
+                System.out.print("Insira o RA do aluno que quer remover: ");
                 int ra = Integer.parseInt(in.nextLine());
                 db.remove(db.get(ra));
-                System.out.print("Aluno deletado com sucesso");
+                JsonManager.removeFromJSON(ra);
+                System.out.println("Aluno deletado com sucesso!");
                 System.out.print("Quer deletar outro aluno ? (s/n) ");
                 String op = in.nextLine().toLowerCase(Locale.ROOT);
                 if(op.compareTo("s") != 0){

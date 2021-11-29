@@ -3,19 +3,21 @@ package tela;
 import DicionarioHash.HashTableMultiMap;
 import Funcoes.Funcoes;
 import aluno.Aluno;
+import json.JsonManager;
 
 import java.util.Scanner;
 
 public class Tela {
     public static void main (String [] args) {
 
-        HashTableMultiMap<Integer, Aluno> db = new HashTableMultiMap<Integer,Aluno>();
+        HashTableMultiMap<Integer, Aluno> db = JsonManager.turnIntoDictionary();
 
         System.out.println("--------------------------------------------------------------------------------------------");
 
         intro(db);
 
         System.out.println("--------------------------------------------------------------------------------------------");
+
 
     }
 
@@ -48,7 +50,7 @@ public class Tela {
                 programa.readAll(db);
                 break;
             case 6:
-                break;
+                return;
             default:
                 System.out.println("Opção invalida");
                 intro(db);
