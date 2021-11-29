@@ -4,6 +4,7 @@ import DicionarioHash.HashTableMultiMap;
 import LSE_TADPilha.NodeStack;
 import aluno.Aluno;
 
+import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -17,47 +18,56 @@ public class Funcoes {
 
         while(true){
             System.out.print("Insira o RA do Aluno: ");
-            int ra = Integer.parseInt(in.nextLine());
-            System.out.println();
-            System.out.print("Insira o Nome do Aluno: ");
-            String nome = in.nextLine();
-            System.out.println();
-            System.out.print("Insira o Endereço do Aluno: ");
-            String endereco = in.nextLine();
-            System.out.println();
-            System.out.print("Insira o Celular do Aluno: ");
-            String celular = in.nextLine().replace("-","").replace("(","").replace(")","").replace(" ", "");
-            System.out.println();
-            System.out.print("Insira a Data de Nascimento do Aluno: ");
-            String nascimento = in.nextLine();
+            try {
+                int ra = Integer.parseInt(in.nextLine());
+                System.out.println();
+                System.out.print("Insira o Nome do Aluno: ");
+                String nome = in.nextLine();
+                System.out.println();
+                System.out.print("Insira o Endereço do Aluno: ");
+                String endereco = in.nextLine();
+                System.out.println();
+                System.out.print("Insira o Celular do Aluno: ");
+                String celular = in.nextLine().replace("-","").replace("(","").replace(")","").replace(" ", "");
+                System.out.println();
+                System.out.print("Insira a Data de Nascimento do Aluno: ");
+                String nascimento = in.nextLine();
 
-            System.out.println("Você confirma as informações abaixo (s/n)?");
-            System.out.println("RA: "+ra);
-            System.out.println("Nome: "+nome);
-            System.out.println("Endereço: "+endereco);
-            System.out.println("Celular: "+celular);
-            System.out.println("Nascimento: "+nascimento);
+                System.out.println("Você confirma as informações abaixo (s/n)?");
+                System.out.println("RA: "+ ra);
+                System.out.println("Nome: "+nome);
+                System.out.println("Endereço: "+endereco);
+                System.out.println("Celular: "+celular);
+                System.out.println("Nascimento: "+nascimento);
 
-            String op = in.nextLine();
-            System.out.println();
+                String op = in.nextLine();
+                System.out.println();
 
-            if(op.compareTo("s") == 0) {
-                Aluno aluno = new Aluno(ra,nome,endereco,celular,nascimento);
+                if(op.compareTo("s") == 0) {
+                    Aluno aluno = new Aluno(ra,nome,endereco,celular,nascimento);
 
-                studentsStack.push(aluno);
+                    studentsStack.push(aluno);
 
-                System.out.println("Você quer cadastrar outro aluno ?");
-                op = in.nextLine().toLowerCase(Locale.ROOT);
+                    System.out.println("Você quer cadastrar outro aluno ?");
+                    op = in.nextLine().toLowerCase(Locale.ROOT);
 
-                if(op.compareTo("s") != 0){
-                    for (int i = 0; i < studentsStack.size(); i++) {
-                        Aluno alunoItem = studentsStack.pop();
-                        db.put(alunoItem.getRa(),alunoItem);
+                    if(op.equals("s") == false){
+                        for (int i = 0; i <= studentsStack.size(); i++) {
+                            Aluno alunoItem = studentsStack.pop();
+                            db.put(alunoItem.getRa(),alunoItem);
+                        }
+                        break;
                     }
-                    break;
-                }
 
+                }
+            }catch(NumberFormatException nexc){
+                System.out.println("Valor digitado não corresponde a um RA");
+                break;
+            }catch(InputMismatchException nexc){
+                System.out.println("Valor digitado não corresponde a um RA");
+                break;
             }
+
         }
     }
 
@@ -68,6 +78,10 @@ public class Funcoes {
             System.out.print("Insira o RA do aluno que quer consultar: ");
             int ra = Integer.parseInt(in.nextLine());
             Aluno aluno = findAlunoByRA(ra,db);
+            if(aluno == null){
+                break;
+            }
+
 
             System.out.println();
 
@@ -86,43 +100,34 @@ public class Funcoes {
         }
 
     }
+    public void readEach(Aluno aluno){
+        System.out.println("RA: " + aluno.getRa());
+        System.out.println("Nome: " + aluno.getNome());
+        System.out.println("Celular: " + aluno.getCelular());
+        System.out.println("Endereço: " + aluno.getEndereco());
+        System.out.println("Data de Nascimento: " + aluno.getDataDeNascimento());
+    }
 
     public void readAll(HashTableMultiMap<Integer,Aluno> db){
-        Scanner in = new Scanner(System.in);
+        db.entrySet().forEach(i -> readEach(i.getValue()));
 
-        while(true){
-            for (int i = 0; i < db.size(); i++) {
-
-                //Aluno aluno = findAlunoByRA(ra,db);
-
-                //System.out.println();
-
-                //System.out.println("RA: " + aluno.getRa());
-                //System.out.println("Nome: " + aluno.getNome());
-                //System.out.println("Celular: " + aluno.getCelular());
-                //System.out.println("Endereço: " + aluno.getEndereco());
-                //System.out.println("Data de Nascimento: " + aluno.getDataDeNascimento());
-            }
-
-            System.out.print("Quer consultar outro aluno ? (s/n) ");
-            String op = in.nextLine();
-
-            if(op.compareTo("s") != 0){
-                break;
-            }
-        }
 
     }
 
     public Aluno findAlunoByRA(int ra,HashTableMultiMap<Integer,Aluno> db){
+        if(db.get(ra).getValue() == null){
+            System.out.println("RA não cadastrado" + ra);
+            return null;
+        }else{
         return db.get(ra).getValue();
+    }
     }
 
     public void update(HashTableMultiMap<Integer,Aluno> db){
         Scanner in = new Scanner(System.in);
         while(true){
             try{
-                System.out.print("Insira o RA do aluno que quer atualizar: ");
+                System.out.print("Insira o RA do aluno que quer remover: ");
                 int ra = Integer.parseInt(in.nextLine());
                 Aluno aluno = findAlunoByRA(ra,db);
 
