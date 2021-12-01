@@ -32,24 +32,24 @@ public class Tela {
         System.out.println("6 para sair");
         Scanner in2 = new Scanner(System.in);
 
-        int escolha = in2.nextInt();
+        String escolha = in2.nextLine();
         switch (escolha) {
-            case 1:
+            case "1":
                 programa.register(db);
                 break;
-            case 2:
+            case "2":
                 programa.read(db);
                 break;
-            case 3:
+            case "3":
                 programa.update(db);
                 break;
-            case 4:
+            case "4":
                 programa.delete(db);
                 break;
-            case 5:
+            case "5":
                 programa.readAll(db);
                 break;
-            case 6:
+            case "6":
                 return;
             default:
                 System.out.println("Opção invalida");

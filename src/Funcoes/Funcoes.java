@@ -52,10 +52,11 @@ public class Funcoes {
 
                     studentsStack.push(aluno);
 
-                    System.out.println("Você quer cadastrar outro aluno ?");
-                    op = in.nextLine().toLowerCase(Locale.ROOT);
 
-                    if(op.equals("s") == false){
+                    System.out.println("Você quer cadastrar outro aluno ?");
+                    String op2 = in.nextLine().toLowerCase(Locale.ROOT);
+
+                    if(op2.compareTo("s") != 0){
                         for (int i = 0; i <= studentsStack.size(); i++) {
                             Aluno alunoItem = studentsStack.pop();
                             db.put(alunoItem.getRa(),alunoItem);
@@ -80,26 +81,33 @@ public class Funcoes {
 
         while(true){
             System.out.print("Insira o RA do aluno que quer consultar: ");
+            try {
             int ra = Integer.parseInt(in.nextLine());
-            Aluno aluno = findAlunoByRA(ra,db);
-            if(aluno == null){
-                System.out.println("RA inválido");
+
+                Aluno aluno = findAlunoByRA(ra, db);
+
+
+                System.out.println();
+
+                System.out.println("RA: " + aluno.getRa());
+                System.out.println("Nome: " + aluno.getNome());
+                System.out.println("Celular: " + aluno.getCelular());
+                System.out.println("Endereço: " + aluno.getEndereco());
+                System.out.println("Data de Nascimento: " + aluno.getDataDeNascimento());
+
+                System.out.print("Quer consultar outro aluno ? (s/n) ");
+                String op = in.nextLine();
+
+                if (op.compareTo("s") != 0) {
+                    break;
+                }
+            }catch(NullPointerException e){
+                System.out.println("Valor não localizado");
                 break;
-            }
-
-            System.out.println();
-
-            System.out.println("RA: " + aluno.getRa());
-            System.out.println("Nome: " + aluno.getNome());
-            System.out.println("Celular: " + aluno.getCelular());
-            System.out.println("Endereço: " + aluno.getEndereco());
-            System.out.println("Data de Nascimento: " + aluno.getDataDeNascimento());
-
-            System.out.print("Quer consultar outro aluno ? (s/n) ");
-            String op = in.nextLine();
-
-            if(op.compareTo("s") != 0){
+            }catch(NumberFormatException e){
+                System.out.println("O RA inserido é invalido");
                 break;
+
             }
         }
 
@@ -133,13 +141,10 @@ public class Funcoes {
                 int ra = 0;
                 Aluno aluno = new Aluno();
 
-                try{
+
                     ra = Integer.parseInt(in.nextLine());
                     aluno = findAlunoByRA(ra,db);
-                }catch (NumberFormatException e){
-                    System.out.println("RA não encontrado");
-                    update(db);
-                }
+
 
                 System.out.println("Informações antigas do aluno:");
                 System.out.println("RA: " + aluno.getRa());
@@ -164,8 +169,12 @@ public class Funcoes {
                 if(op.compareTo("s") != 0){
                     break;
                 }
-            }catch(Exception e){
+            }catch(NullPointerException e){
                 System.out.println("RA não encontrado");
+                break;
+            }catch (NumberFormatException e){
+                System.out.println("RA não encontrado");
+                break;
             }
         }
 

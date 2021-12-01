@@ -59,7 +59,7 @@ public class JsonManager {
             jsonObject.put(aluno.getRa(),alunoJson);
 
             FileWriter writer = new FileWriter("saida.json");
-            System.out.println(jsonObject.toJSONString());
+
             writer.write(jsonObject.toJSONString());
             writer.close();
 
