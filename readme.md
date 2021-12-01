@@ -2,51 +2,51 @@
 
 Nesse mini SGBD foi usado hash para a indexação dos dados.
 
-* O mini SGBD  possibilita a  criação de dados e salvar.
+* Inserir quantos alunos desejar com todos os seus dados.
 
-* Atualizar dados passando seu RA pois  está sendo usando como se fosse chave primária.
+* Listar todos os alunos inseridos com todos os seus dados.
 
-* Deletar Passando um ra específico.
+* Consultar alunos usando o RA exibindo todos os dados do aluno.
 
-* Visualizar todos os dados cadastrados nesse Mini SGBD.
+* Remoção de um aluno.
 
+* Atualizar passando o Ra para identificar o  aluno para atualizar.
 
 ## Aluno
-
-* RA
-* Nome
-* Endereço
+  ### Atributos de Aluno
+* ra
+* nome
+* endereço
 * celular 
 * data de Nascimento
 
 ## Interface 
 
-Quando inicia o programa irá  ver uma tela com  algumas opções do tipo criar um novo aluno, atualizar , deletar e vê todos alunos
-cadastrados 
-  
+Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Para consultar um Aluno, 3 Para atualizar seus dados, 4 Para remover seus dados, 5 para ler todos os  dados.
+
   <img src="telaPrincipal.png" alt="telaPrincipal" width="25000"/>
   
-* caso escolha 1 que é salvar irá ver uma  tela assim:
-
+* caso escolha 1 ira ter essa tela :
+ 
    <img src="TelaDeSalvar.png" alt="TelaDeSalvar" width="25000"/>
    
-   Obs: exemplo de cadastro
-* caso escolha  2 que é para consultar um aluno terá que colocar o Ra desse aluno e irá ver uma tela assim :
-   
+  
+* caso escolha  2 ira ter essa tela :
+  
    <img src="consultar.png" alt="consultar" width="25000"/>
    
-    Obs: exemplo de cadastro
+  
    
-* Caso escolha 3 que e atualizar aluno irá ver uma tela assim :
+* Caso escolha 3 ira ter essa tela :
 
    <img src="atualizar.png" alt="atualizar" width="25000"/>
-    Obs: exemplo de cadastro
+   
   
-* Caso escolha 4 que e remover um aluno  irá ver uma tela assim:
+* Caso escolha 4 ira ter essa tela:
 
   <img src="deletar.png" alt="remover" width="25000"/>
   
-* caso 5 escolha que ver todos os alunos irá ver uma tela assim :
+* caso 5 escolhaira ter essa tela :
   
     <img src="alunosCadastrados.png" alt="alunosCadastrados" width="25000"/>
 
