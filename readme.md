@@ -72,7 +72,7 @@ Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Par
 
 ### Funcoes 
 
-É onde executado a maior parte da lógica de cadastrar um aluno,  remover, ver apenas um aluno e deletar aluno 
+É onde é feito a maior parte da lógica de cadastrar um aluno,  remover, ver apenas um aluno e deletar aluno 
 
 
 ### Aluno  
