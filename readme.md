@@ -77,18 +77,18 @@ Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Par
 
 ### Aluno  
 
- É onde estão os atributos que o aluno tem.
+ É onde está os atributos que o aluno tem.
 
 
 ### exceptions 
 
-e  onde está a exceções que tem  programa
+e  onde está a exceções que do programa.
 
 
 
-## DicionárioHash 
+### DicionárioHash 
 
-É onde está toda  lógica  do  hash
+É onde está toda lógica do hash.
 
 
 
@@ -102,7 +102,7 @@ E onde está toda a lógica de pilha.
 
 
 
-### Esse mini SGBD foi criado usando  o java 17 e  foi utlizado o pacote json simples.
+### Esse mini SGBD foi criado usando  o java 17 e foi utlizado o pacote json simples.
 
 
    
