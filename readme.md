@@ -23,4 +23,4 @@ Nesse mini SGBD foi usado hash para a indexação dos dados.
 Quando inicia o ira  ver uma tela com  algumas opções do Tipo  criar um novo aluno, atualizar , deletar e ve todpsos alunos
 cadastrados 
 
-  ![tela](telaPrincipal.png)
+  ![interface](telaPrincipal.png)
