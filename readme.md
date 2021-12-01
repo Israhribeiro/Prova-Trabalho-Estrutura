@@ -32,16 +32,16 @@ Nesse mini SGBD foi usado hash para a indexação dos dados.
 
 ## Interface 
 
-Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Para consultar um Aluno, 3 Para atualizar seus dados, 4 Para remover seus dados, 5 para ler todos os  dados.
+Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Para consultar um Aluno, 3 Para atualizar seus dados, 4 Para remover seus dados, 5 para ler todos os  dados 6 sair.
 
   <img src="telaPrincipal.png" alt="telaPrincipal" width="25000"/>
   
-* caso escolha 1 ira ter essa tela :
+* Caso escolha 1 ira ter essa tela :
  
    <img src="TelaDeSalvar.png" alt="TelaDeSalvar" width="25000"/>
    
   
-* caso escolha  2 ira ter essa tela :
+* Caso escolha  2 ira ter essa tela :
   
    <img src="consultar.png" alt="consultar" width="25000"/>
    
@@ -56,12 +56,12 @@ Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Par
 
   <img src="deletar.png" alt="remover" width="25000"/>
   
-* caso 5 escolhaira ter essa tela :
+* Caso escolha 5 ira ter essa tela :
   
     <img src="alunosCadastrados.png" alt="alunosCadastrados" width="25000"/>
 
 
-
+* Caso escolha 6 ira sair
 
 
 ### Packages 
@@ -102,7 +102,7 @@ E onde está toda a lógica de pilha.
 
 
 
-### Esse mini SGBD foi criado usando  o  java 17 e o pacote json simples.
+### Esse mini SGBD foi criado usando  o java 17 e  foi utlizado o pacote json simples.
 
 
    
