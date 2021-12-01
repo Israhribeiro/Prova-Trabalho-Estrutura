@@ -10,21 +10,21 @@
 
 # Mini SGBD
 
-Nesse mini SGBD foi usado hash para a indexação dos dados.
+Neste mini SGBD, foi usado hash para a indexação dos dados.
 
 * Inserir quantos alunos desejar com todos os seus dados.
 
 * Listar todos os alunos inseridos com todos os seus dados.
 
-* Consultar alunos usando o RA exibindo todos os dados do aluno.
+* Consultar alunos usando o RA, exibindo todos os dados dos alunos.
 
 * Remoção de um aluno.
 
-* Atualizar passando o Ra para identificar o  aluno para atualizar.
+* Atualizar o aluno através da identificação pelo RA.
 
 ## Aluno
   ### Atributos de Aluno
-* ra
+* ra (Atributo chave)
 * nome
 * endereço
 * celular 
@@ -32,7 +32,7 @@ Nesse mini SGBD foi usado hash para a indexação dos dados.
 
 ## Interface 
 
-Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Para consultar um Aluno, 3 Para atualizar seus dados, 4 Para remover seus dados, 5 para ler todos os  dados 6 sair.
+Ao iniciar o programa, ele mostrará uma tela com as opções 1 Para cadastrar, 2 Para consultar um Aluno, 3 Para atualizar seus dados, 4 Para remover seus dados, 5 para ler todos os  dados e 6 sair.
 
   <img src="telaPrincipal.png" alt="telaPrincipal" width="25000"/>
   
@@ -43,8 +43,7 @@ Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Par
   
 * Caso escolha  2 ira ter essa tela :
   
-   <img src="consultar.png" alt="consultar" width="25000"/>
-   
+   <img src="consultar.png" alt="consultar" width="25000"/>   
   
    
 * Caso escolha 3 ira ter essa tela :
@@ -68,22 +67,21 @@ Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Par
 
 
 #### Tela
-É onde e executado o programa numa class do mesmo nome, nesse package tem o minimo possivel de parte logica pois  esse packages só mostra a tela inicial.
+É onde é executado o programa numa class do mesmo nome, nesse package tem o mínimo possivel de parte lógica, pois, esse packages só mostram a tela inicial.
 
 ### Funcoes 
 
-É onde é feito a maior parte da logica de cadastrar um aluno, remover, ver apenas um aluno e deletar aluno. 
+É onde é feito a maior parte da lógica de cadastrar um aluno, remover, ver apenas um aluno e deletar o aluno. 
 
 
 ### Aluno  
 
- É onde está os atributos que o aluno tem.
+ É onde está os atributos que o aluno possui.
 
 
 ### exceptions 
 
 É onde está a exceções do programa.
-
 
 
 ### DicionárioHash 
@@ -93,16 +91,16 @@ Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Par
 
 
 ### Json
- Responsável por salvar os cadastros  no programa.
+ Responsável por salvar os cadastros no programa.
 
 
 ### Array e tadPilha
 
-E onde está toda a lógica de pilha.
+É onde está toda a lógica de pilha.
 
 
 
-### Esse mini SGBD foi criado usando  o java 17 e foi utlizado o pacote json simples.
+### Esse mini SGBD foi criado usando o java 17, e foi utlizado o pacote json simples.
 
 
    
