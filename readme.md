@@ -44,7 +44,7 @@ cadastrados
   
 * Caso escolha 4 que e remover um aluno  irá ver uma tela assim:
 
-  <img src="remover.png" alt="remover" width="25000"/>
+  <img src="deletar.png" alt="remover" width="25000"/>
   
 * caso 5 escolha que ver todos os alunos irá ver uma tela assim :
   
