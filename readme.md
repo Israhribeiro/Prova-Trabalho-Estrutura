@@ -68,11 +68,11 @@ Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Par
 
 
 #### Tela
-É onde e executado o programa numa class do mesmo nome, nesse package tem o minimo possivel de parte logica pois  esse packages so mostra a tela inicial.
+É onde e executado o programa numa class do mesmo nome, nesse package tem o minimo possivel de parte logica pois  esse packages só mostra a tela inicial.
 
 ### Funcoes 
 
-É onde é feito a maior parte da lógica de cadastrar um aluno,  remover, ver apenas um aluno e deletar aluno 
+É onde é feito a maior parte da logica de cadastrar um aluno, remover, ver apenas um aluno e deletar aluno. 
 
 
 ### Aluno  
@@ -82,7 +82,7 @@ Quando inicia o programa irá  ter tela com as opções  1 Para cadastrar, 2 Par
 
 ### exceptions 
 
-e  onde está a exceções que do programa.
+É onde está a exceções do programa.
 
 
 
