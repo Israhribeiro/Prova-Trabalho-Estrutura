@@ -100,7 +100,7 @@ Ao iniciar o programa, ele mostrará uma tela com as opções 1 Para cadastrar, 
 
 
 
-### Esse mini SGBD foi criado usando o java 17, e foi utlizado o pacote json simples.
+### Esse mini SGBD foi criado usando o java 17, e foi utlizado o pacote json simple.
 
 
    
